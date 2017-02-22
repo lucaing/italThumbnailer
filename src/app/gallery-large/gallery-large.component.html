@@ -1,0 +1,42 @@
+<div class="card" *ngIf="isLoading">
+  <h4 class="card-header">Loading...</h4>
+  <div class="card-block text-xs-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">Your Photos</h4>
+  <div class="card-block">
+    <div class="modal fade" id="selectedImageModal" >
+    	  <div class="modal-dialog" role="document">
+    	    <div class="modal-content">
+    	      <div class="modal-body">
+    	         <img *ngIf="selectedImage" src="{{selectedImage.url}}" >
+    	      </div>
+    	    </div>
+    	  </div>
+    </div>
+    <ul id="thumbnailsList">
+       <li *ngFor="let image of datasource" >
+          <img src="{{image.url}}" class="tn"
+    	  width="360" height="360"
+    	  data-toggle="modal" data-target="#selectedImageModal"
+                  (click)=setSelectedImage(image)>
+       </li>
+    </ul>
+
+    <style type="text/css">
+      ul { padding:0; width:780px; margin:20px auto}
+      li { display:inline;}
+          .tn{
+       margin:2px 0px;
+       box-shadow:#999 1px 1px 3px 1px;
+       cursor: pointer
+          }
+      .modal-content {
+        width: 670px !important;
+    }
+    </style>
+  </div>
+</div>

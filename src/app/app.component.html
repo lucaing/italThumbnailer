@@ -1,0 +1,24 @@
+<div class="container">
+
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="nav navbar-nav">
+      <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="fa fa-info-circle"></i> Gallery Small
+      </a>
+      <a routerLink="/gallery-large" class="nav-item nav-link" routerLinkActive="active" >
+        <i class="fa fa-info-circle"></i> Gallery Large
+      </a>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  <div class="card">
+    <h4 class="card-header">Insert your photos here</h4>
+    <div class="card-block">
+      <input type="filepicker" name="myPhoto" data-fp-apikey="AZ0lmCDu8QsSCZZcDVCqjz"
+      (change)="addImageUrl($event.fpfile.url)"/>
+    </div>
+  </div>
+
+</div>
